@@ -44,10 +44,10 @@ class Player {
 
 class Obstacle {
 	constructor() {
-		this.positionX = 50;
-		this.positionY = 100;
 		this.width = 30;
 		this.height = 10;
+		this.positionX = Math.round(Math.random() * 99) + 1 - this.width / 2;
+		this.positionY = 100;
 
 		this.domElement = null;
 
@@ -102,7 +102,7 @@ setInterval(() => {
 			obstacle.positionY < player.positionY + player.height &&
 			obstacle.height + obstacle.positionY > player.positionY
 		) {
-			location.href = "./gameover.html";
+			location.href = "./gameoover.html";
 		}
 
 		//
