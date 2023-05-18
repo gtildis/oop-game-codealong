@@ -75,10 +75,6 @@ class Obstacle {
 		this.domElement.style.bottom = this.positionY + "vh";
 		// console.log(this.obstacle);
 
-		// if (this.positionY < -50) {
-		// 	obstaclesArray.splice(0, 1);
-		// }
-
 		// console.log(" newpositions", this.positionY);
 
 		//if this.height = -20
@@ -97,8 +93,19 @@ setInterval(() => {
 
 setInterval(() => {
 	// obstacleOne.moveDown();
-	obstaclesArray.forEach((obstacle) => {
+	obstaclesArray.forEach((obstacle, index) => {
 		obstacle.moveDown();
+
+		if (
+			obstacle.positionX < player.positionX + player.width &&
+			obstacle.positionX + obstacle.width > player.positionX &&
+			obstacle.positionY < player.positionY + player.height &&
+			obstacle.height + obstacle.positionY > player.positionY
+		) {
+			location.href = "./gameover.html";
+		}
+
+		//
 	});
 }, 50);
 
