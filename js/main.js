@@ -42,6 +42,66 @@ class Player {
 	}
 }
 
+class Obstacle {
+	constructor() {
+		this.positionX = 50;
+		this.positionY = 100;
+		this.width = 30;
+		this.height = 10;
+
+		this.domElement = null;
+
+		this.createElement();
+	}
+
+	createElement() {
+		///step 1 create the element
+		this.domElement = document.createElement("div");
+		this.domElement.className = "obstacle";
+
+		this.domElement.style.width = this.width + "vw";
+		this.domElement.style.height = this.height + "vh";
+		this.domElement.style.bottom = this.positionY + "vh";
+		this.domElement.style.left = this.positionX + "vw";
+
+		this.domElement.innerText = "this is the obstacle";
+
+		const parentElm = document.getElementById("board");
+		parentElm.appendChild(this.domElement);
+	}
+	moveDown() {
+		//set interval
+		this.positionY--;
+		this.domElement.style.bottom = this.positionY + "vh";
+		// console.log(this.obstacle);
+
+		// if (this.positionY < -50) {
+		// 	obstaclesArray.splice(0, 1);
+		// }
+
+		// console.log(" newpositions", this.positionY);
+
+		//if this.height = -20
+	}
+}
+
+const obstaclesArray = []; /// here we have o
+
+//create new obstacles
+setInterval(() => {
+	const newObstacle = new Obstacle();
+	obstaclesArray.push(newObstacle);
+}, 4000);
+
+//move all obstacles
+
+setInterval(() => {
+	// obstacleOne.moveDown();
+	obstaclesArray.forEach((obstacle) => {
+		obstacle.moveDown();
+	});
+}, 50);
+
 const player = new Player();
 
 document.addEventListener("keydown", (event) => {
